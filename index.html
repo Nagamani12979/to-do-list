@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="TODO-app">
+            <h2>To-DO list <img src="images/icon.png" alt="images"></h2>
+               <div class="row">
+               <input type="text" id="input-type" placeholder="add your text">
+               <button onclick="addTask()">Add</button>
+            </div>
+            <ul id="list-container">
+            </ul>
+     </div>
+ </div>
+ <script >
+    const inputType = document.getElementById("input-type");
+    const listContainer = document.getElementById("list-container");
+
+function addTask(){
+    if (inputType.value === '') {
+        alert("You must write something");
+    }
+     else {
+        let li = document.createElement("li");
+        li.innerHTML= inputType.value; 
+        listContainer.appendChild(li);
+        let span=document.createElement("span")
+        span.innerHTML="\u00d7";
+        li.appendChild(span);
+    }
+    inputType.value = '';  
+} 
+listContainer.addEventListener("click", function(e){
+    if(e.target.tagName ==="LI"){
+        e.target.classList.toggle("checked");
+    }
+    else if(e.target.tagName ==="SPAN"){
+        e.target.parentElement.remove();
+    }
+}, false);
+
+
+ </script>
+</body>
+</html>
